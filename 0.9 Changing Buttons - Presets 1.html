@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            .button1 {
+                background-color: yellowgreen;
+                border: none;
+                padding: 50px 50px;
+            }
+            .button2 {
+                top: 10%;
+                left: 55%;
+                padding: 200px 200px;
+            }
+            
+        </style>
+        <title>
+            This is a legimate file.
+        </title>
+    </head>
+    <body>
+        <button title="This is a tooltip!" id="presButton" class="button1">
+            Test Button! Click me to change my color from an array of presets!
+        </button>
+        <p id="presetText">
+            Placeholder Text.
+        </p>
+        <button id="rgbButton" class="button2" type="button">
+            Test Button! Click me to change my color from a pool of RGB values!
+        </button>
+        <script>
+            let colorRandom = new Array();
+            let rgbRandom = new Array();
+            colorRandom = [
+                'red', 
+                'blue', 
+                'yellow', 
+                'orange',
+                'green', 
+                'blue',
+                'purple', 
+                'pink'
+            ];
+            rgbRandom = [0, 0, 0];
+            let selectColor = "";
+            let selectRGB = 0;
+            let test = "This is a test!";
+            let presetParagraph = document.getElementById("presetText");
+            let presetButton = document.getElementById("presButton");
+            let rgbButton = document.getElementById("rgbButton");
+            presetButton.addEventListener('click', changeColor, false);
+            presetButton.addEventListener('click', changePreset, false);
+            rgbButton.addEventListener('click', changeRGB, false);
+            function changeColor() {
+                selectColor = colorRandom[Math.floor(Math.random()*colorRandom.length)];
+                console.log(selectColor);
+                presetButton.style.backgroundColor = selectColor;
+            }
+            function changePreset() {
+                presetParagraph.textContent = (`The color of the button is now ${selectColor}.`);
+            }
+            function changeRGB() {
+                selectRGB = (Math.floor(Math.random() * 255) + 1) + (Math.floor(Math.random() * 255) + 1) + (Math.floor(Math.random() * 255) + 1);
+                selectRGB = 'rgb(' + selectRGB.join(', ') + ')';
+                console.log(selectRGB);
+            }
+        </script>
+    </body>
+    </html>
